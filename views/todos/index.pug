@@ -1,0 +1,38 @@
+html
+    head
+        title= title
+        style
+            include ../style.css
+body
+    h1 TODOLIST
+    div
+        table
+            thead
+                tr: th Todo
+                    th Date
+                    th Par
+                    th
+                    th
+                    th
+                    th
+            tbody
+                each val in content
+                    tr
+                        td= val.Message
+                        td= " le " + val.createdAt
+                        td= val.name
+                        td
+                            input(type='checkbox' checked=val.Completion==1)
+                        td
+                            form.form-inline(action='/todos/' + val.id + '?_method=PATCH', method="POST")
+                                button.btn-primary(type="submit") Validate
+                        td
+                            form.form-inline(action='/todos/' + val.id + '?_method=DELETE', method="POST")
+                                button.btn-primary(type="submit") Delete
+                        td
+                            form.form-inline(action='/todos/' + val.id, method="GET")
+                                button.btn-primary(type="submit") Details
+    div
+        a(href="/add") I add a Todo
+    div
+        a(href="/login/disconnect") Disconnect
