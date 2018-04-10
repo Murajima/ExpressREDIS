@@ -2,8 +2,22 @@ const express = require('express')
 const session = require('express-session')
 const todo = require('../utils/todo.js')
 const user = require('../utils/user.js')
-
+const Redis = require('ioredis')
+const redis = new Redis()
 const router = express.Router();
+
+
+
+async function test() {
+	await redis.set('test', 'lol')
+	const val = await redis.get('test')
+	console.log(val)
+}
+
+test().catch((err) => {
+	console.log('Error: ', err)
+})
+
 
 router.post('/', (req, res, next) => {
     var username = req.body.username

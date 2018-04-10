@@ -19,6 +19,7 @@
   "devDependencies": {
     "bcrypt-nodejs": "0.0.3",
     "express-session": "^1.15.6",
+    "ioredis": "^3.2.2",
     "method-override": "^2.3.10",
     "pug": "^2.0.3"
   }
